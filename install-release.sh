@@ -356,7 +356,7 @@ get_latest_version() {
   # Get Xray latest release version number
   local tmp_file
   tmp_file="$(mktemp)"
-  if ! curl -x "${PROXY}" -sS -H "Accept: application/vnd.github.v3+json" -o "$tmp_file" 'https://api.github.com/repos/XTLS/Xray-core/releases/latest'; then
+  if ! curl -x "${PROXY}" -sS -H "Accept: application/vnd.github.v3+json" -o "$tmp_file" 'https://ghproxy.com/https://api.github.com/repos/XTLS/Xray-core/releases/latest'; then
     "rm" "$tmp_file"
     echo 'error: Failed to get release list, please check your network.'
     exit 1
@@ -367,14 +367,14 @@ get_latest_version() {
       echo "error: github API rate limit exceeded"
     else
       echo "error: Failed to get the latest release version."
-      echo "Welcome bug report:https://github.com/XTLS/Xray-install/issues"
+      echo "Welcome bug report:https://ghproxy.com/https://github.com/XTLS/Xray-install/issues"
     fi
     "rm" "$tmp_file"
     exit 1
   fi
   "rm" "$tmp_file"
   RELEASE_LATEST="v${RELEASE_LATEST#v}"
-  if ! curl -x "${PROXY}" -sS -H "Accept: application/vnd.github.v3+json" -o "$tmp_file" 'https://api.github.com/repos/XTLS/Xray-core/releases'; then
+  if ! curl -x "${PROXY}" -sS -H "Accept: application/vnd.github.v3+json" -o "$tmp_file" 'https://ghproxy.com/https://api.github.com/repos/XTLS/Xray-core/releases'; then
     "rm" "$tmp_file"
     echo 'error: Failed to get release list, please check your network.'
     exit 1
@@ -386,7 +386,7 @@ get_latest_version() {
       echo "error: github API rate limit exceeded"
     else
       echo "error: Failed to get the latest release version."
-      echo "Welcome bug report:https://github.com/XTLS/Xray-install/issues"
+      echo "Welcome bug report:https://ghproxy.com/https://github.com/XTLS/Xray-install/issues"
     fi
     "rm" "$tmp_file"
     exit 1
@@ -395,7 +395,7 @@ get_latest_version() {
   for i in ${!releases_list[@]}
   do
     releases_list[$i]="v${releases_list[$i]#v}"
-    grep -q "https://github.com/XTLS/Xray-core/releases/download/${releases_list[$i]}/Xray-linux-$MACHINE.zip" "$tmp_file" && break
+    grep -q "https://ghproxy.com/https://github.com/XTLS/Xray-core/releases/download/${releases_list[$i]}/Xray-linux-$MACHINE.zip" "$tmp_file" && break
   done
   "rm" "$tmp_file"
   PRE_RELEASE_LATEST="${releases_list[$i]}"
@@ -441,7 +441,7 @@ version_gt() {
 }
 
 download_xray() {
-  DOWNLOAD_LINK="https://github.com/XTLS/Xray-core/releases/download/$INSTALL_VERSION/Xray-linux-$MACHINE.zip"
+  DOWNLOAD_LINK="https://ghproxy.com/https://github.com/XTLS/Xray-core/releases/download/$INSTALL_VERSION/Xray-linux-$MACHINE.zip"
   echo "Downloading Xray archive: $DOWNLOAD_LINK"
   if ! curl -x "${PROXY}" -R -H 'Cache-Control: no-cache' -o "$ZIP_FILE" "$DOWNLOAD_LINK"; then
     echo 'error: Download failed! Please check your network or try again.'
@@ -659,8 +659,8 @@ install_geodata() {
       exit 1
     fi
   }
-  local download_link_geoip="https://github.com/v2fly/geoip/releases/latest/download/geoip.dat"
-  local download_link_geosite="https://github.com/v2fly/domain-list-community/releases/latest/download/dlc.dat"
+  local download_link_geoip="https://ghproxy.com/https://github.com/v2fly/geoip/releases/latest/download/geoip.dat"
+  local download_link_geosite="https://ghproxy.com/https://github.com/v2fly/domain-list-community/releases/latest/download/dlc.dat"
   local file_ip='geoip.dat'
   local file_dlc='dlc.dat'
   local file_site='geosite.dat'
