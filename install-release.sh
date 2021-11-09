@@ -374,7 +374,7 @@ get_latest_version() {
   fi
   "rm" "$tmp_file"
   RELEASE_LATEST="v${RELEASE_LATEST#v}"
-  if ! curl -x "${PROXY}" -sS -H "Accept: application/vnd.github.v3+json" -o "$tmp_file" 'https://ghproxy.com/https://api.github.com/repos/XTLS/Xray-core/releases'; then
+  if ! curl -x "${PROXY}" -sS -H "Accept: application/vnd.github.v3+json" -o "$tmp_file" 'https://api.github.com/repos/XTLS/Xray-core/releases'; then
     "rm" "$tmp_file"
     echo 'error: Failed to get release list, please check your network.'
     exit 1
@@ -386,7 +386,7 @@ get_latest_version() {
       echo "error: github API rate limit exceeded"
     else
       echo "error: Failed to get the latest release version."
-      echo "Welcome bug report:https://ghproxy.com/https://github.com/XTLS/Xray-install/issues"
+      echo "Welcome bug report:https://github.com/XTLS/Xray-install/issues"
     fi
     "rm" "$tmp_file"
     exit 1
