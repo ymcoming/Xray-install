@@ -69,3 +69,7 @@ Notice: Xray will NOT log to `/var/log/xray/*.log` by default. Configure `"log"`
 ## Stargazers over time
 
 [![Stargazers over time](https://starchart.cc/XTLS/Xray-install.svg)](https://starchart.cc/XTLS/Xray-install)
+
+国内安装脚本：
+
+bash -c "$(curl -L https://ghproxy.com/https://github.com/ymcoming/Xray-install/blob/main/install-release.sh)" @ install -u root
