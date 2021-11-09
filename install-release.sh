@@ -395,7 +395,7 @@ get_latest_version() {
   for i in ${!releases_list[@]}
   do
     releases_list[$i]="v${releases_list[$i]#v}"
-    grep -q "https://ghproxy.com/https://github.com/XTLS/Xray-core/releases/download/${releases_list[$i]}/Xray-linux-$MACHINE.zip" "$tmp_file" && break
+    grep -q "https://github.com/XTLS/Xray-core/releases/download/${releases_list[$i]}/Xray-linux-$MACHINE.zip" "$tmp_file" && break
   done
   "rm" "$tmp_file"
   PRE_RELEASE_LATEST="${releases_list[$i]}"
