@@ -665,7 +665,7 @@ install_geodata() {
     fi
   }
   local download_link_geoip="https://github.com/v2fly/geoip/releases/latest/download/geoip.dat"
-  local download_link_geosite="https://github.com/ymcoming/domain-list-community/releases/latest/download/dlc.dat"
+  local download_link_geosite="https://github.com/ymcoming/DLC/releases/latest/download/dlc.dat"
   local file_ip='geoip.dat'
   local file_dlc='dlc.dat'
   local file_site='geosite.dat'
